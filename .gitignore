@@ -3,3 +3,6 @@ node_modules
 
 # Compiled files
 lib
+
+# Include tcr lib
+!tcr/**/lib

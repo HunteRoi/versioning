@@ -5,4 +5,5 @@ export interface IVersion {
 	setPreRelease(preRelease: string): void;
 	setBuild(build: string): void;
 	toString(): string;
+	resetPreRelease(): void;
 }

@@ -44,6 +44,10 @@ export class Version implements IVersion {
 		this.preRelease = preRelease;
 	}
 
+	resetPreRelease(): void {
+		this.preRelease = null;
+	}
+
 	setBuild(build: string): void {
 		if (!build.match(/\w+(\.\w+)*/i))
 			throw new Error(

@@ -114,6 +114,19 @@ describe('Version', () => {
 		});
 	});
 
+	describe('resetPreRelease', () => {
+		it('should set the pre-release suffix to null', () => {
+			const version = new Version();
+			const actual = 'alpha';
+
+			version.setPreRelease(actual);
+			expect(version.preRelease).toBe(actual);
+			version.resetPreRelease();
+
+			expect(version.preRelease).toBeNull();
+		});
+	});
+
 	describe('setBuild', () => {
 		it('should change the build suffix', () => {
 			const version = new Version();
