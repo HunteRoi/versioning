@@ -219,4 +219,13 @@ describe('Version', () => {
 			);
 		});
 	});
+
+	describe('toJSON', () => {
+		it('should call toString', () => {
+			const version = new Version();
+			const expected = `\"${version.toString()}\"`;
+
+			expect(JSON.stringify(version)).toBe(expected);
+		});
+	});
 });

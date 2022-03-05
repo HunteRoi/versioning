@@ -172,4 +172,11 @@ export class Version implements IVersion {
 			build
 		);
 	}
+
+	/**
+	 * Stringifies the version when `JSON.parse` is called.
+	 */
+	toJSON(): string {
+		return this.toString();
+	}
 }
