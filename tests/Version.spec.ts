@@ -39,6 +39,7 @@ describe('Version', () => {
 		const patch = faker.datatype.number();
 		const preRelease = faker.datatype.string();
 		const build = faker.datatype.string();
+
 		const version = new Version(major, minor, patch, preRelease, build);
 
 		expect(version.major).toBe(major);
