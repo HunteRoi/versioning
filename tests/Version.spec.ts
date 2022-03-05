@@ -9,7 +9,23 @@ describe('Version', () => {
 		major = faker.datatype.number();
 	});
 
-	it('should instanciate with a major number, a minor number and a patch number', () => {
-		expect(() => new Version()).not.toBeNull();
+	it('should instanciate properly', () => {
+		const version = new Version();
+		expect(version).not.toBeNull();
+	});
+
+	it('should instanciate with a major number', () => {
+		const version = new Version();
+		expect(version.major).toBeDefined();
+	});
+
+	it('should instanciate with a minor number', () => {
+		const version = new Version();
+		expect(version.minor).toBeDefined();
+	});
+
+	it('should instanciate with a patch number', () => {
+		const version = new Version();
+		expect(version.patch).toBeDefined();
 	});
 });
