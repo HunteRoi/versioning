@@ -33,7 +33,20 @@ describe('Version', () => {
 		expect(version.build).toBeNull();
 	});
 
-	it('should instanciate with the given major, minor, patch, preRelease and build values', () => {});
+	it('should instanciate with the given major, minor, patch, preRelease and build values', () => {
+		const major = faker.datatype.number();
+		const minor = faker.datatype.number();
+		const patch = faker.datatype.number();
+		const preRelease = faker.datatype.string();
+		const build = faker.datatype.string();
+		const version = new Version(major, minor, patch, preRelease, build);
+
+		expect(version.major).toBe(major);
+		expect(version.minor).toBe(minor);
+		expect(version.patch).toBe(patch);
+		expect(version.preRelease).toBe(preRelease);
+		expect(version.build).toBe(build);
+	});
 
 	describe('incrementMajor', () => {
 		it('should increment major by one, and set minor and patch numbers to 0', () => {
