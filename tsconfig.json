@@ -8,6 +8,7 @@
 		"resolveJsonModule": true,
 		"strictNullChecks": false,
 		"esModuleInterop": true,
+		"moduleResolution": "Node",
 		"baseUrl": "./src"
 	},
 	"include": ["src/**/*"],
