@@ -1,4 +1,5 @@
-export * from './Version';
 export * from './IVersion';
-export * from './VersionManager';
 export * from './IVersionManager';
+export * from './Version';
+export * from './VersionManager';
+export * from './UpdateType';

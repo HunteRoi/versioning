@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-import { Type, Version, VersionManager } from '../src';
+import { UpdateType, Version, VersionManager } from '../src';
 
 describe('VersionManager', () => {
 	it('should throw an error if the version parameter is null or undefined', () => {
@@ -16,7 +16,7 @@ describe('VersionManager', () => {
 
 	describe('update', () => {
 		it('should update the version\'s major number based on the type "major"', () => {
-			const type: Type = 'major';
+			const type: UpdateType = 'major';
 			const version = new Version();
 			const versionManager = new VersionManager(version);
 			const expected = version.major + 1;
@@ -29,7 +29,7 @@ describe('VersionManager', () => {
 		});
 
 		it('should update the version\'s minor number based on the type "minor"', () => {
-			const type: Type = 'minor';
+			const type: UpdateType = 'minor';
 			const version = new Version();
 			const versionManager = new VersionManager(version);
 			const expected = version.minor + 1;
@@ -43,7 +43,7 @@ describe('VersionManager', () => {
 		});
 
 		it('should update the version\'s patch number based on the type "patch"', () => {
-			const type: Type = 'patch';
+			const type: UpdateType = 'patch';
 			const version = new Version();
 			const versionManager = new VersionManager(version);
 			const expected = version.patch + 1;
@@ -58,7 +58,7 @@ describe('VersionManager', () => {
 		});
 
 		it('should update the pre-release value based on the preRelease parameter', () => {
-			const type: Type = 'major';
+			const type: UpdateType = 'major';
 			const version = new Version();
 			const versionManager = new VersionManager(version);
 			const expected = faker.datatype.string();
@@ -69,7 +69,7 @@ describe('VersionManager', () => {
 		});
 
 		it('should reset the pre-release when the preRelease parameter is not provided', () => {
-			const type: Type = 'major';
+			const type: UpdateType = 'major';
 			const version = new Version();
 			const versionManager = new VersionManager(version);
 			version.setPreRelease('alpha');
@@ -81,7 +81,7 @@ describe('VersionManager', () => {
 		});
 
 		it('should update the build value based on the build parameter', () => {
-			const type: Type = 'major';
+			const type: UpdateType = 'major';
 			const version = new Version();
 			const versionManager = new VersionManager(version);
 			const expected = faker.datatype.string();
@@ -92,7 +92,7 @@ describe('VersionManager', () => {
 		});
 
 		it('should reset the build when the build parameter is not provided', () => {
-			const type: Type = 'major';
+			const type: UpdateType = 'major';
 			const version = new Version();
 			const versionManager = new VersionManager(version);
 			version.setBuild('001');

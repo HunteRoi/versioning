@@ -1,5 +1,6 @@
-import { IVersionManager, Type } from 'IVersionManager';
 import { IVersion } from 'IVersion';
+import { IVersionManager } from 'IVersionManager';
+import { UpdateType } from 'UpdateType';
 
 /**
  * A wrapper of a {@link Version} instance to properly update it.
@@ -25,7 +26,7 @@ export class VersionManager implements IVersionManager {
 	}
 
 	/** @inheritdoc */
-	update(type: Type, preRelease?: string, build?: string): void {
+	update(type: UpdateType, preRelease?: string, build?: string): void {
 		switch (type) {
 			case 'major':
 				this._version.incrementMajor();
