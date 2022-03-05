@@ -109,12 +109,12 @@ describe('Version', () => {
 			expect(version.build).toBe(expected);
 		});
 
-		it('should throw an error if the build is not an alphanumeric value', () => {
+		it('should throw an error if the build is not alphanumeric values separated by dots', () => {
 			const version = new Version();
 			const build = '!!!!!!';
 
 			expect(() => version.setBuild(build)).toThrowError(
-				'The build suffix must be an alphanumeric value only!'
+				'The build suffix must be alphanumeric values separated by dots!'
 			);
 		});
 	});
