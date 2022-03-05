@@ -16,6 +16,6 @@ export class VersionManager implements IVersionManager {
 	}
 
 	update(type: Type, preRelease: string = null, build: string = null): void {
-		throw new Error('Method not implemented.');
+		if (type === 'major') this._version.incrementMajor();
 	}
 }
