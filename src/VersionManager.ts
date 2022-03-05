@@ -31,5 +31,6 @@ export class VersionManager implements IVersionManager {
 		if (type === 'patch') this._version.incrementPatch();
 		if (preRelease) this._version.setPreRelease(preRelease);
 		else this._version.resetPreRelease();
+		if (build) this._version.setBuild(build);
 	}
 }

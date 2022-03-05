@@ -79,5 +79,16 @@ describe('VersionManager', () => {
 
 			expect(version.preRelease).toBeNull();
 		});
+
+		it('should update the build value based on the build parameter', () => {
+			const type: Type = 'major';
+			const version = new Version();
+			const versionManager = new VersionManager(version);
+			const expected = faker.datatype.string();
+
+			versionManager.update(type, null, expected);
+
+			expect(version.build).toBe(expected);
+		});
 	});
 });
