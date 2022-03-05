@@ -1,7 +1,4 @@
-/**
- * The type of the update.
- */
-export type Type = 'major' | 'minor' | 'patch';
+import { UpdateType } from 'UpdateType';
 
 /**
  * The contract class to ensure a proper update of a {@link Version} instance.
@@ -16,5 +13,5 @@ export interface IVersionManager {
 	 * @param preRelease the value of the pre-release (optional)
 	 * @param build the value of the build (optional)
 	 */
-	update(type: Type, preRelease?: string, build?: string): void;
+	update(type: UpdateType, preRelease?: string, build?: string): void;
 }
