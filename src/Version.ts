@@ -39,6 +39,8 @@ export class Version implements IVersion {
 	}
 
 	setBuild(build: string): void {
+		if (!build.match(/\w+/i))
+			throw new Error('The build suffix must be an alphanumeric value only!');
 		this.build = build;
 	}
 }

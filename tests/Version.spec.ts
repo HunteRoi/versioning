@@ -89,7 +89,7 @@ describe('Version', () => {
 			expect(version.preRelease).toBe(expected);
 		});
 
-		it('should throw an error if the pre-release is not an alphanumberic value', () => {
+		it('should throw an error if the pre-release is not an alphanumeric value', () => {
 			const version = new Version();
 			const preRelease = '!!!!!!';
 
@@ -107,6 +107,15 @@ describe('Version', () => {
 			version.setBuild(expected);
 
 			expect(version.build).toBe(expected);
+		});
+
+		it('should throw an error if the build is not an alphanumeric value', () => {
+			const version = new Version();
+			const build = '!!!!!!';
+
+			expect(() => version.setBuild(build)).toThrowError(
+				'The build suffix must be an alphanumeric value only!'
+			);
 		});
 	});
 });
