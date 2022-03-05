@@ -228,4 +228,16 @@ describe('Version', () => {
 			expect(JSON.stringify(version)).toBe(expected);
 		});
 	});
+
+	describe('fromJSON', () => {
+		it('should revive the version as an instance of the class', () => {
+			const version = new Version();
+			const expected = version;
+			const stringifiedVersion = JSON.stringify(version);
+
+			const actual = JSON.parse(stringifiedVersion, Version.fromJSON);
+
+			expect(actual).toMatchObject(expected);
+		});
+	});
 });

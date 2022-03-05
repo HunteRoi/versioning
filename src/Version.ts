@@ -179,4 +179,15 @@ export class Version implements IVersion {
 	toJSON(): string {
 		return this.toString();
 	}
+
+	/**
+	 * Revives an instance of {@link Version} when it has been stringified via `JSON.stringify`.
+	 *
+	 * @param key the property (should be null or undefined)
+	 * @param value the value for this property (should be the version as a string)
+	 * @returns the newly created instance of {@link Version}
+	 */
+	static fromJSON(key: string | null | undefined, value: string): Version {
+		return Version.fromString(value);
+	}
 }
