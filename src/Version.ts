@@ -21,4 +21,8 @@ export class Version implements IVersion {
 		this.minor++;
 		this.patch = 0;
 	}
+
+	incrementPatch(): void {
+		this.patch++;
+	}
 }

@@ -52,4 +52,19 @@ describe('Version', () => {
 			expect(version.patch).toEqual(expectedPatch);
 		});
 	});
+
+	describe('incrementPatch', () => {
+		it('should increment patch by one, and not update major and minor numbers', () => {
+			const version = new Version();
+			const expectedMajor = version.major;
+			const expectedMinor = version.minor;
+			const expectedPatch = version.patch + 1;
+
+			version.incrementPatch();
+
+			expect(version.major).toEqual(expectedMajor);
+			expect(version.minor).toEqual(expectedMinor);
+			expect(version.patch).toEqual(expectedPatch);
+		});
+	});
 });
