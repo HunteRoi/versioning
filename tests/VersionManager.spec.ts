@@ -22,6 +22,22 @@ describe('VersionManager', () => {
 			versionManager.update(type);
 
 			expect(version.major).toBe(expected);
+			expect(version.minor).toBe(0);
+			expect(version.patch).toBe(0);
+		});
+
+		it('should update the version\'s minor number based on the type "minor"', () => {
+			const type: Type = 'minor';
+			const version = new Version();
+			const versionManager = new VersionManager(version);
+			const expected = version.minor + 1;
+			const currentMajor = version.major;
+
+			versionManager.update(type);
+
+			expect(version.major).toBe(currentMajor);
+			expect(version.minor).toBe(expected);
+			expect(version.patch).toBe(0);
 		});
 	});
 });
