@@ -89,12 +89,12 @@ describe('Version', () => {
 			expect(version.preRelease).toBe(expected);
 		});
 
-		it('should throw an error if the pre-release is not an alphanumeric value', () => {
+		it('should throw an error if the pre-release is not alphanumeric values separated by dots', () => {
 			const version = new Version();
 			const preRelease = '!!!!!!';
 
 			expect(() => version.setPreRelease(preRelease)).toThrowError(
-				'The pre-release suffix must be an alphanumeric value only!'
+				'The pre-release suffix must be alphanumeric values separated by dots!'
 			);
 		});
 	});
