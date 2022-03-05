@@ -3,4 +3,5 @@ export interface IVersion {
 	incrementMinor(): void;
 	incrementPatch(): void;
 	setPreRelease(preRelease: string): void;
+	setBuild(build: string): void;
 }

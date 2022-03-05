@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { version } from 'os';
 
 import { Version } from '../src';
 
@@ -42,9 +43,9 @@ describe('Version', () => {
 
 			version.incrementMajor();
 
-			expect(version.major).toEqual(expectedMajor);
-			expect(version.minor).toEqual(expectedMinor);
-			expect(version.patch).toEqual(expectedPatch);
+			expect(version.major).toBe(expectedMajor);
+			expect(version.minor).toBe(expectedMinor);
+			expect(version.patch).toBe(expectedPatch);
 		});
 	});
 
@@ -57,9 +58,9 @@ describe('Version', () => {
 
 			version.incrementMinor();
 
-			expect(version.major).toEqual(expectedMajor);
-			expect(version.minor).toEqual(expectedMinor);
-			expect(version.patch).toEqual(expectedPatch);
+			expect(version.major).toBe(expectedMajor);
+			expect(version.minor).toBe(expectedMinor);
+			expect(version.patch).toBe(expectedPatch);
 		});
 	});
 
@@ -72,9 +73,9 @@ describe('Version', () => {
 
 			version.incrementPatch();
 
-			expect(version.major).toEqual(expectedMajor);
-			expect(version.minor).toEqual(expectedMinor);
-			expect(version.patch).toEqual(expectedPatch);
+			expect(version.major).toBe(expectedMajor);
+			expect(version.minor).toBe(expectedMinor);
+			expect(version.patch).toBe(expectedPatch);
 		});
 	});
 
@@ -95,6 +96,17 @@ describe('Version', () => {
 			expect(() => version.setPreRelease(preRelease)).toThrowError(
 				'The pre-release suffix must be an alphanumeric value only!'
 			);
+		});
+	});
+
+	describe('setBuild', () => {
+		it('should change the build suffix', () => {
+			const version = new Version();
+			const expected = faker.datatype.string();
+
+			version.setBuild(expected);
+
+			expect(version.build).toBe(expected);
 		});
 	});
 });

@@ -37,4 +37,8 @@ export class Version implements IVersion {
 			);
 		this.preRelease = preRelease;
 	}
+
+	setBuild(build: string): void {
+		this.build = build;
+	}
 }
