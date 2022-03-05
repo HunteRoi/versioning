@@ -28,6 +28,11 @@ describe('Version', () => {
 		expect(version.preRelease).toBeNull();
 	});
 
+	it('should instanciate with an empty build', () => {
+		const version = new Version();
+		expect(version.build).toBeNull();
+	});
+
 	describe('incrementMajor', () => {
 		it('should increment major by one, and set minor and patch numbers to 0', () => {
 			const version = new Version();
