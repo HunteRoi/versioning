@@ -136,5 +136,27 @@ describe('Version', () => {
 
 			expect(version.toString()).toBe(expected);
 		});
+
+		it('should append build with a plus after the major, minor and patch numbers', () => {
+			const version = new Version();
+			const build = '001';
+			const expected = `${version.major}.${version.minor}.${version.patch}+${build}`;
+
+			version.setBuild(build);
+
+			expect(version.toString()).toBe(expected);
+		});
+
+		it('should append build with a plus after the major, minor, patch numbers and the pre-release suffix', () => {
+			const version = new Version();
+			const preRelease = 'alpha';
+			const build = '001';
+			const expected = `${version.major}.${version.minor}.${version.patch}-${preRelease}+${build}`;
+
+			version.setPreRelease(preRelease);
+			version.setBuild(build);
+
+			expect(version.toString()).toBe(expected);
+		});
 	});
 });
