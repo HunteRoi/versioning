@@ -1,11 +1,31 @@
 import { IVersion } from './IVersion';
 
 export class Version implements IVersion {
-	major: number;
-	minor: number;
-	patch: number;
-	preRelease: string;
-	build: string;
+	private _major: number;
+	private _minor: number;
+	private _patch: number;
+	private _preRelease: string;
+	private _build: string;
+
+	get major() {
+		return this._major;
+	}
+
+	get minor() {
+		return this._minor;
+	}
+
+	get patch() {
+		return this._patch;
+	}
+
+	get preRelease() {
+		return this._preRelease;
+	}
+
+	get build() {
+		return this._build;
+	}
 
 	constructor(
 		major: number = 1,
@@ -14,26 +34,26 @@ export class Version implements IVersion {
 		preRelease: string = null,
 		build: string = null
 	) {
-		this.major = major;
-		this.minor = minor;
-		this.patch = patch;
-		this.preRelease = preRelease;
-		this.build = build;
+		this._major = major;
+		this._minor = minor;
+		this._patch = patch;
+		this._preRelease = preRelease;
+		this._build = build;
 	}
 
 	incrementMajor(): void {
-		this.major++;
-		this.minor = 0;
-		this.patch = 0;
+		this._major++;
+		this._minor = 0;
+		this._patch = 0;
 	}
 
 	incrementMinor(): void {
-		this.minor++;
-		this.patch = 0;
+		this._minor++;
+		this._patch = 0;
 	}
 
 	incrementPatch(): void {
-		this.patch++;
+		this._patch++;
 	}
 
 	setPreRelease(preRelease: string): void {
@@ -41,11 +61,11 @@ export class Version implements IVersion {
 			throw new Error(
 				'The pre-release suffix must be alphanumeric values separated by dots!'
 			);
-		this.preRelease = preRelease;
+		this._preRelease = preRelease;
 	}
 
 	resetPreRelease(): void {
-		this.preRelease = null;
+		this._preRelease = null;
 	}
 
 	setBuild(build: string): void {
@@ -53,18 +73,18 @@ export class Version implements IVersion {
 			throw new Error(
 				'The build suffix must be alphanumeric values separated by dots!'
 			);
-		this.build = build;
+		this._build = build;
 	}
 
 	resetBuild(): void {
-		this.build = null;
+		this._build = null;
 	}
 
 	toString(): string {
-		let version = `${this.major}.${this.minor}.${this.patch}`;
+		let version = `${this._major}.${this._minor}.${this._patch}`;
 
-		if (this.preRelease) version += `-${this.preRelease}`;
-		if (this.build) version += `+${this.build}`;
+		if (this._preRelease) version += `-${this._preRelease}`;
+		if (this._build) version += `+${this._build}`;
 
 		return version;
 	}
