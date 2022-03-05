@@ -118,4 +118,13 @@ describe('Version', () => {
 			);
 		});
 	});
+
+	describe('toString', () => {
+		it('should append major, minor and patch version with dots', () => {
+			const version = new Version();
+			const expected = `${version.major}.${version.minor}.${version.patch}`;
+
+			expect(version.toString()).toBe(expected);
+		});
+	});
 });

@@ -43,4 +43,8 @@ export class Version implements IVersion {
 			throw new Error('The build suffix must be an alphanumeric value only!');
 		this.build = build;
 	}
+
+	toString(): string {
+		return `${this.major}.${this.minor}.${this.patch}`;
+	}
 }
