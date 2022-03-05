@@ -56,5 +56,16 @@ describe('VersionManager', () => {
 			expect(version.minor).toBe(currentMinor);
 			expect(version.patch).toBe(expected);
 		});
+
+		it('should update the pre-release value based on the preRelease parameter', () => {
+			const type: Type = 'major';
+			const version = new Version();
+			const versionManager = new VersionManager(version);
+			const expected = faker.datatype.string();
+
+			versionManager.update(type, expected);
+
+			expect(version.preRelease).toBe(expected);
+		});
 	});
 });
