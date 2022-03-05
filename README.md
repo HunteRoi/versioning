@@ -1,37 +1,16 @@
-<a href="https://www.npmjs.com/package/@hunteroi/discord-logger"><img src="https://badge.fury.io/js/%40hunteroi%2Fdiscord-logger.svg" alt="npm version" height="18"></a>
+<a href="https://www.npmjs.com/package/@hunteroi/versioning">
+  <img src="https://badge.fury.io/js/%40hunteroi%2Fversioning.svg" alt="npm version" height="18"/>
+</a>
+<img src="https://img.shields.io/badge/Built%20with-TCR-green" alt="built with tcr" height="18" />
 
-# discord-logger
+# versioning
 
-A superset of events on top of DiscordJS ones, enabling to log events occuring in your guild
-
-![IMAGE](assets/example.gif)
-
-See [./example/index.js](example/index.js).
+A simple `Version` class which encapsulates the logic to manage your project's version following [SemVer](https://semver.org/).
 
 ## Installation
 
 ```sh
-npm install --save @hunteroi/discord-logger
-```
-
-## Prerequisites ⚠️
-
-You must use **NodeJS v16.6.0 or higher** to run a bot with this library.
-
-You also must not forget to include [mandatory intents](#mandatory-intents) and [partials](#partials) as well as give your bot the rights to read messages and commands.
-
-### Mandatory intents
-
--
-
-### Partials
-
--
-
-## Events
-
-```ts
-manager.on(LoggerManagerEvents.<eventname>, () => {});
+npm install --save @hunteroi/versioning
 ```
 
 ## Contribution
