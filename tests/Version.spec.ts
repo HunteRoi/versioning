@@ -184,5 +184,13 @@ describe('Version', () => {
 
 			expect(actual).toMatchObject(expected);
 		});
+
+		it('should throw an error if the string value is not correctly formatted', () => {
+			const version = 'a+b..5-alpha.beta-alpha';
+
+			expect(() => Version.fromString(version)).toThrowError(
+				`The value ${version} does not follow the semantic versioning format: "<major>.<minor>.<patch>-<pre-release>+<build>" where pre-release and build are optional.`
+			);
+		});
 	});
 });

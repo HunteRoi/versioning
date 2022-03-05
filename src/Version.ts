@@ -62,11 +62,17 @@ export class Version implements IVersion {
 	}
 
 	static fromString(version: string): Version {
-		const [_, major, minor, patch, preRelease, build] = [
-			...version.matchAll(
-				/(\d+)\.(\d+)\.(\d+)(?:-(\w+(?:\.\w+)*))?(?:\+(\w+(?:\.\w+)*))?/g
-			),
-		][0];
+		const regexp =
+			/^(\d+)\.(\d+)\.(\d+)(?:-(\w+(?:\.\w+)*))?(?:\+(\w+(?:\.\w+)*))?$/g;
+		const match = [...version.matchAll(regexp)];
+
+		if (match.length === 0) {
+			throw new Error(
+				`The value ${version} does not follow the semantic versioning format: "<major>.<minor>.<patch>-<pre-release>+<build>" where pre-release and build are optional.`
+			);
+		}
+
+		const [_, major, minor, patch, preRelease, build] = [...match][0];
 
 		return new Version(
 			Number(major),
