@@ -23,6 +23,11 @@ describe('Version', () => {
 		expect(version.patch).toBeDefined();
 	});
 
+	it('should instanciate with an empty pre-release', () => {
+		const version = new Version();
+		expect(version.preRelease).toBeNull();
+	});
+
 	describe('incrementMajor', () => {
 		it('should increment major by one, and set minor and patch numbers to 0', () => {
 			const version = new Version();
