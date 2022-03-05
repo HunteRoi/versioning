@@ -60,4 +60,20 @@ export class Version implements IVersion {
 
 		return version;
 	}
+
+	fromString(version: string): Version {
+		const [_, major, minor, patch, preRelease, build] = [
+			...version.matchAll(
+				/(\d+)\.(\d+)\.(\d+)(?:-(\w+(?:\.\w+)*))?(?:\+(\w+(?:\.\w+)*))?/g
+			),
+		][0];
+
+		return new Version(
+			Number(major),
+			Number(minor),
+			Number(patch),
+			preRelease,
+			build
+		);
+	}
 }
