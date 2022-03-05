@@ -230,7 +230,7 @@ describe('Version', () => {
 	});
 
 	describe('fromJSON', () => {
-		it('should revive the version as an instance of the class', () => {
+		it('should call fromString', () => {
 			const version = new Version();
 			const expected = version;
 			const stringifiedVersion = JSON.stringify(version);
