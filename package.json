@@ -7,7 +7,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "build": "tsc",
-    "build:docs": "typedoc --out docs src/index.ts",
+    "build:docs": "typedoc --out docs/api-docs src/index.ts",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "yarn build"
