@@ -9,5 +9,12 @@ export type Type = 'major' | 'minor' | 'patch';
  * @export
  */
 export interface IVersionManager {
+	/**
+	 * Updates the version properly.
+	 *
+	 * @param type the type of the update
+	 * @param preRelease the value of the pre-release (optional)
+	 * @param build the value of the build (optional)
+	 */
 	update(type: Type, preRelease?: string, build?: string): void;
 }

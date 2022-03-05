@@ -67,5 +67,17 @@ describe('VersionManager', () => {
 
 			expect(version.preRelease).toBe(expected);
 		});
+
+		it('should reset the pre-release when the preRelease parameter is not provided', () => {
+			const type: Type = 'major';
+			const version = new Version();
+			const versionManager = new VersionManager(version);
+			version.setPreRelease('alpha');
+			expect(version.preRelease).not.toBeNull();
+
+			versionManager.update(type);
+
+			expect(version.preRelease).toBeNull();
+		});
 	});
 });
