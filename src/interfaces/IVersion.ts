@@ -48,4 +48,9 @@ export interface IVersion {
 	 * Outputs the version in the [SemVer](https://semver.org) format: `<major>.<minor>.<patch>` with optional pre-release (`-<pre-release>`) and build (`+<build>`) suffixes.
 	 */
 	toString(): string;
+
+	/**
+	 * Stringifies the version when `JSON.parse` is called.
+	 */
+	toJSON(): string;
 }

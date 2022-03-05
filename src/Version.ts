@@ -173,9 +173,7 @@ export class Version implements IVersion {
 		);
 	}
 
-	/**
-	 * Stringifies the version when `JSON.parse` is called.
-	 */
+	/** @inheritdoc */
 	toJSON(): string {
 		return this.toString();
 	}
