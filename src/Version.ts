@@ -45,6 +45,10 @@ export class Version implements IVersion {
 	}
 
 	toString(): string {
-		return `${this.major}.${this.minor}.${this.patch}`;
+		let version = `${this.major}.${this.minor}.${this.patch}`;
+
+		if (this.preRelease) version += `-${this.preRelease}`;
+
+		return version;
 	}
 }

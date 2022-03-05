@@ -120,9 +120,19 @@ describe('Version', () => {
 	});
 
 	describe('toString', () => {
-		it('should append major, minor and patch version with dots', () => {
+		it('should append major, minor and patch numbers with dots', () => {
 			const version = new Version();
 			const expected = `${version.major}.${version.minor}.${version.patch}`;
+
+			expect(version.toString()).toBe(expected);
+		});
+
+		it('should append pre-release with a dash after the major, minor and patch numbers', () => {
+			const version = new Version();
+			const preRelease = 'alpha';
+			const expected = `${version.major}.${version.minor}.${version.patch}-${preRelease}`;
+
+			version.setPreRelease(preRelease);
 
 			expect(version.toString()).toBe(expected);
 		});
