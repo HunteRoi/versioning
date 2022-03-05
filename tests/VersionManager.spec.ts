@@ -90,5 +90,17 @@ describe('VersionManager', () => {
 
 			expect(version.build).toBe(expected);
 		});
+
+		it('should reset the build when the build parameter is not provided', () => {
+			const type: Type = 'major';
+			const version = new Version();
+			const versionManager = new VersionManager(version);
+			version.setBuild('001');
+			expect(version.build).not.toBeNull();
+
+			versionManager.update(type);
+
+			expect(version.build).toBeNull();
+		});
 	});
 });
