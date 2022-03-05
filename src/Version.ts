@@ -7,12 +7,18 @@ export class Version implements IVersion {
 	preRelease: string;
 	build: string;
 
-	constructor() {
-		this.major = 1;
-		this.minor = 0;
-		this.patch = 0;
-		this.preRelease = null;
-		this.build = null;
+	constructor(
+		major: number = 1,
+		minor: number = 0,
+		patch: number = 0,
+		preRelease: string = null,
+		build: string = null
+	) {
+		this.major = major;
+		this.minor = minor;
+		this.patch = patch;
+		this.preRelease = preRelease;
+		this.build = build;
 	}
 
 	incrementMajor(): void {

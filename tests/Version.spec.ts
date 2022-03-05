@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker';
-import { version } from 'os';
 
 import { Version } from '../src';
 
@@ -33,6 +32,8 @@ describe('Version', () => {
 		const version = new Version();
 		expect(version.build).toBeNull();
 	});
+
+	it('should instanciate with the given major, minor, patch, preRelease and build values', () => {});
 
 	describe('incrementMajor', () => {
 		it('should increment major by one, and set minor and patch numbers to 0', () => {
