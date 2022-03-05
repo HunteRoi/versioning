@@ -72,4 +72,15 @@ describe('Version', () => {
 			expect(version.patch).toEqual(expectedPatch);
 		});
 	});
+
+	describe('setPreRelease', () => {
+		it('should change the pre-release suffix', () => {
+			const version = new Version();
+			const expected = faker.datatype.string();
+
+			version.setPreRelease(expected);
+
+			expect(version.preRelease).toBe(expected);
+		});
+	});
 });

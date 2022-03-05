@@ -27,4 +27,8 @@ export class Version implements IVersion {
 	incrementPatch(): void {
 		this.patch++;
 	}
+
+	setPreRelease(preRelease: string): void {
+		this.preRelease = preRelease;
+	}
 }
