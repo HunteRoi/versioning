@@ -147,6 +147,19 @@ describe('Version', () => {
 		});
 	});
 
+	describe('resetBuild', () => {
+		it('should set the build suffix to null', () => {
+			const version = new Version();
+			const actual = '001';
+
+			version.setBuild(actual);
+			expect(version.build).toBe(actual);
+			version.resetBuild();
+
+			expect(version.build).toBeNull();
+		});
+	});
+
 	describe('toString', () => {
 		it('should append major, minor and patch numbers with dots', () => {
 			const version = new Version();

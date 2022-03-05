@@ -56,6 +56,10 @@ export class Version implements IVersion {
 		this.build = build;
 	}
 
+	resetBuild(): void {
+		this.build = null;
+	}
+
 	toString(): string {
 		let version = `${this.major}.${this.minor}.${this.patch}`;
 
