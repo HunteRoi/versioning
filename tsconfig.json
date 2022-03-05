@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"declaration": true,
+		"outDir": "./lib",
+		"strict": true,
+		"resolveJsonModule": true,
+		"strictNullChecks": false,
+		"esModuleInterop": true,
+		"baseUrl": "./src"
+	},
+	"include": ["src/**/*"],
+	"exclude": ["lib/*", "coverage/*", "tcr"]
+}
