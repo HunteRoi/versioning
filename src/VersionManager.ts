@@ -26,12 +26,30 @@ export class VersionManager implements IVersionManager {
 
 	/** @inheritdoc */
 	update(type: Type, preRelease?: string, build?: string): void {
-		if (type === 'major') this._version.incrementMajor();
-		if (type === 'minor') this._version.incrementMinor();
-		if (type === 'patch') this._version.incrementPatch();
-		if (preRelease) this._version.setPreRelease(preRelease);
-		else this._version.resetPreRelease();
-		if (build) this._version.setBuild(build);
-		else this._version.resetBuild();
+		switch (type) {
+			case 'major':
+				this._version.incrementMajor();
+				break;
+			case 'minor':
+				this._version.incrementMinor();
+				break;
+			case 'patch':
+				this._version.incrementPatch();
+				break;
+			default:
+				break;
+		}
+
+		if (preRelease) {
+			this._version.setPreRelease(preRelease);
+		} else {
+			this._version.resetPreRelease();
+		}
+
+		if (build) {
+			this._version.setBuild(build);
+		} else {
+			this._version.resetBuild();
+		}
 	}
 }
