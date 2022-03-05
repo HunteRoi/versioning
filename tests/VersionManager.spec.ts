@@ -39,5 +39,20 @@ describe('VersionManager', () => {
 			expect(version.minor).toBe(expected);
 			expect(version.patch).toBe(0);
 		});
+
+		it('should update the version\'s patch number based on the type "patch"', () => {
+			const type: Type = 'patch';
+			const version = new Version();
+			const versionManager = new VersionManager(version);
+			const expected = version.patch + 1;
+			const currentMajor = version.major;
+			const currentMinor = version.minor;
+
+			versionManager.update(type);
+
+			expect(version.major).toBe(currentMajor);
+			expect(version.minor).toBe(currentMinor);
+			expect(version.patch).toBe(expected);
+		});
 	});
 });
