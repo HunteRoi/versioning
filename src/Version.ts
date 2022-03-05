@@ -29,6 +29,10 @@ export class Version implements IVersion {
 	}
 
 	setPreRelease(preRelease: string): void {
+		if (!preRelease.match(/\w+/i))
+			throw new Error(
+				'The pre-release suffix must be an alphanumeric value only!'
+			);
 		this.preRelease = preRelease;
 	}
 }

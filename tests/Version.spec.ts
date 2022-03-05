@@ -82,5 +82,14 @@ describe('Version', () => {
 
 			expect(version.preRelease).toBe(expected);
 		});
+
+		it('should throw an error if the pre-release is not an alphanumberic value', () => {
+			const version = new Version();
+			const preRelease = '!!!!!!';
+
+			expect(() => version.setPreRelease(preRelease)).toThrowError(
+				'The pre-release suffix must be an alphanumeric value only!'
+			);
+		});
 	});
 });
