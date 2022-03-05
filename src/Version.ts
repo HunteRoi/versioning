@@ -10,4 +10,10 @@ export class Version implements IVersion {
 		this.minor = 0;
 		this.patch = 0;
 	}
+
+	incrementMajor() {
+		this.major++;
+		this.minor = 0;
+		this.patch = 0;
+	}
 }

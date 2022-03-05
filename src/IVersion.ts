@@ -1,1 +1,3 @@
-export interface IVersion {}
+export interface IVersion {
+	incrementMajor(): void;
+}
