@@ -174,4 +174,15 @@ describe('Version', () => {
 			expect(version.toString()).toBe(expected);
 		});
 	});
+
+	describe('fromString', () => {
+		it('should instanciate a version when the string value is formatted correctly', () => {
+			const version = '1.2.5-alpha.beta+001.987';
+			const expected = new Version(1, 2, 5, 'alpha.beta', '001.987');
+
+			const actual = Version.fromString(version);
+
+			expect(actual).toMatchObject(expected);
+		});
+	});
 });

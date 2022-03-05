@@ -61,7 +61,7 @@ export class Version implements IVersion {
 		return version;
 	}
 
-	fromString(version: string): Version {
+	static fromString(version: string): Version {
 		const [_, major, minor, patch, preRelease, build] = [
 			...version.matchAll(
 				/(\d+)\.(\d+)\.(\d+)(?:-(\w+(?:\.\w+)*))?(?:\+(\w+(?:\.\w+)*))?/g
