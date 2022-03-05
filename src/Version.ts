@@ -1,4 +1,4 @@
-import { IVersion } from './IVersion';
+import { IVersion } from './interfaces';
 
 const alphanumericValuesSeparatedByDots = /\w+(\.\w+)*/i;
 

@@ -1,6 +1,5 @@
-import { IVersion } from 'IVersion';
-import { IVersionManager } from 'IVersionManager';
-import { UpdateType } from 'UpdateType';
+import { IVersion, IVersionManager } from './interfaces';
+import { UpdateType } from './UpdateType';
 
 /**
  * A wrapper of a {@link Version} instance to properly update it.
