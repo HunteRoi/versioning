@@ -6,12 +6,12 @@ import { UpdateType } from '../UpdateType';
  * @export
  */
 export interface IVersionManager {
-	/**
-	 * Updates the version properly.
-	 *
-	 * @param type the type of the update
-	 * @param preRelease the value of the pre-release (optional)
-	 * @param build the value of the build (optional)
-	 */
-	update(type: UpdateType, preRelease?: string, build?: string): void;
+  /**
+   * Updates the version properly.
+   *
+   * @param type the type of the update
+   * @param preRelease the value of the pre-release (optional)
+   * @param build the value of the build (optional)
+   */
+  update(type: UpdateType, preRelease?: string, build?: string): void;
 }
