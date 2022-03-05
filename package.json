@@ -1,5 +1,5 @@
 {
-	"name": "versioning",
+	"name": "@hunteroi/versioning",
 	"version": "1.0.0",
 	"description": "A versioning class for your project",
 	"main": "lib/index.js",
