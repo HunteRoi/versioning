@@ -1,5 +1,7 @@
 import { IVersion } from './IVersion';
 
+const alphanumericValuesSeparatedByDots = /\w+(\.\w+)*/i;
+
 export class Version implements IVersion {
 	private _major: number;
 	private _minor: number;
@@ -57,7 +59,7 @@ export class Version implements IVersion {
 	}
 
 	setPreRelease(preRelease: string): void {
-		if (!preRelease.match(/\w+(\.\w+)*/i))
+		if (!preRelease.match(alphanumericValuesSeparatedByDots))
 			throw new Error(
 				'The pre-release suffix must be alphanumeric values separated by dots!'
 			);
@@ -69,7 +71,7 @@ export class Version implements IVersion {
 	}
 
 	setBuild(build: string): void {
-		if (!build.match(/\w+(\.\w+)*/i))
+		if (!build.match(alphanumericValuesSeparatedByDots))
 			throw new Error(
 				'The build suffix must be alphanumeric values separated by dots!'
 			);
