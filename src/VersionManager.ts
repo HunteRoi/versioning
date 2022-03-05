@@ -15,7 +15,7 @@ export class VersionManager implements IVersionManager {
 		this._version = version;
 	}
 
-	update(type: Type, preRelease: string = null, build: string = null): void {
+	update(type: Type, preRelease?: string, build?: string): void {
 		if (type === 'major') this._version.incrementMajor();
 		if (type === 'minor') this._version.incrementMinor();
 		if (type === 'patch') this._version.incrementPatch();

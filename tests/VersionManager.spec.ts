@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 import { Type, Version, VersionManager } from '../src';
 
 describe('VersionManager', () => {

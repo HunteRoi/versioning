@@ -9,5 +9,5 @@ export type Type = 'major' | 'minor' | 'patch';
  * @export
  */
 export interface IVersionManager {
-	update(type: Type, preRelease: string, build: string): void;
+	update(type: Type, preRelease?: string, build?: string): void;
 }
