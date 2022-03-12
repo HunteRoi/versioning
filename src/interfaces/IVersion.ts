@@ -1,3 +1,5 @@
+import { UpdateType } from 'UpdateType';
+
 /**
  * A contract class that follows [Semantic Versioning](https://semver.org) standards to manage your project's version.
  *
@@ -53,4 +55,13 @@ export interface IVersion {
    * Stringifies the version when `JSON.parse` is called.
    */
   toJSON(): string;
+
+  /**
+   * Updates the version properly.
+   *
+   * @param type the type of the update
+   * @param preRelease the value of the pre-release (optional)
+   * @param build the value of the build (optional)
+   */
+  update(type: UpdateType, preRelease?: string, build?: string): void;
 }

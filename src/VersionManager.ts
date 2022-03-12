@@ -6,6 +6,7 @@ import { UpdateType } from './UpdateType';
  *
  * @export
  * @implements {IVersionManager}
+ * @deprecated
  */
 export class VersionManager implements IVersionManager {
   /**
@@ -24,30 +25,10 @@ export class VersionManager implements IVersionManager {
     this._version = version;
   }
 
-  /** @inheritdoc */
+  /** @inheritdoc
+   * @deprecated Use {@link IVersion.update} instead.
+   */
   update(type: UpdateType, preRelease?: string, build?: string): void {
-    switch (type) {
-      case 'major':
-        this._version.incrementMajor();
-        break;
-      case 'minor':
-        this._version.incrementMinor();
-        break;
-      case 'patch':
-        this._version.incrementPatch();
-        break;
-    }
-
-    if (preRelease) {
-      this._version.setPreRelease(preRelease);
-    } else {
-      this._version.resetPreRelease();
-    }
-
-    if (build) {
-      this._version.setBuild(build);
-    } else {
-      this._version.resetBuild();
-    }
+    this._version.update(type, preRelease, build);
   }
 }

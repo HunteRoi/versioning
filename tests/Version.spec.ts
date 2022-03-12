@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-import { Version } from '../src';
+import { UpdateType, Version } from '../src';
 
 describe('Version', () => {
   it('should instanciate properly', () => {
@@ -238,6 +238,89 @@ describe('Version', () => {
       const actual = JSON.parse(stringifiedVersion, Version.fromJSON);
 
       expect(actual).toMatchObject(expected);
+    });
+  });
+
+  describe('update', () => {
+    it('should update the version\'s major number based on the type "major"', () => {
+      const type: UpdateType = 'major';
+      const version = new Version();
+      const expected = version.major + 1;
+
+      version.update(type);
+
+      expect(version.major).toBe(expected);
+      expect(version.minor).toBe(0);
+      expect(version.patch).toBe(0);
+    });
+
+    it('should update the version\'s minor number based on the type "minor"', () => {
+      const type: UpdateType = 'minor';
+      const version = new Version();
+      const expected = version.minor + 1;
+      const currentMajor = version.major;
+
+      version.update(type);
+
+      expect(version.major).toBe(currentMajor);
+      expect(version.minor).toBe(expected);
+      expect(version.patch).toBe(0);
+    });
+
+    it('should update the version\'s patch number based on the type "patch"', () => {
+      const type: UpdateType = 'patch';
+      const version = new Version();
+      const expected = version.patch + 1;
+      const currentMajor = version.major;
+      const currentMinor = version.minor;
+
+      version.update(type);
+
+      expect(version.major).toBe(currentMajor);
+      expect(version.minor).toBe(currentMinor);
+      expect(version.patch).toBe(expected);
+    });
+
+    it('should update the pre-release value based on the preRelease parameter', () => {
+      const type: UpdateType = 'major';
+      const version = new Version();
+      const expected = faker.datatype.string();
+
+      version.update(type, expected);
+
+      expect(version.preRelease).toBe(expected);
+    });
+
+    it('should reset the pre-release when the preRelease parameter is not provided', () => {
+      const type: UpdateType = 'major';
+      const version = new Version();
+      version.setPreRelease('alpha');
+      expect(version.preRelease).not.toBeNull();
+
+      version.update(type);
+
+      expect(version.preRelease).toBeNull();
+    });
+
+    it('should update the build value based on the build parameter', () => {
+      const type: UpdateType = 'major';
+      const version = new Version();
+      const expected = faker.datatype.string();
+
+      version.update(type, null, expected);
+
+      expect(version.build).toBe(expected);
+    });
+
+    it('should reset the build when the build parameter is not provided', () => {
+      const type: UpdateType = 'major';
+      const version = new Version();
+      version.setBuild('001');
+      expect(version.build).not.toBeNull();
+
+      version.update(type);
+
+      expect(version.build).toBeNull();
     });
   });
 });

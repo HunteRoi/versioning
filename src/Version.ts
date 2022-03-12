@@ -1,6 +1,9 @@
 import { IVersion } from './interfaces';
+import { UpdateType } from './UpdateType';
+import { UpdateTypes } from './UpdatesTypes';
 
 const alphanumericValuesSeparatedByDots = /\w+(\.\w+)*/i;
+const defaultIndexValue = 0;
 
 /**
  * A simple utility class wrapping up some methods to manage your project's version from within the code.
@@ -85,14 +88,14 @@ export class Version implements IVersion {
   /** @inheritdoc */
   incrementMajor(): void {
     this._major++;
-    this._minor = 0;
-    this._patch = 0;
+    this._minor = defaultIndexValue;
+    this._patch = defaultIndexValue;
   }
 
   /** @inheritdoc */
   incrementMinor(): void {
     this._minor++;
-    this._patch = 0;
+    this._patch = defaultIndexValue;
   }
 
   /** @inheritdoc */
@@ -187,5 +190,32 @@ export class Version implements IVersion {
    */
   static fromJSON(key: string | null | undefined, value: string): Version {
     return Version.fromString(value);
+  }
+
+  /** @inheritdoc */
+  update(type: UpdateType, preRelease?: string, build?: string): void {
+    switch (type) {
+      case UpdateTypes.MAJOR:
+        this.incrementMajor();
+        break;
+      case UpdateTypes.MINOR:
+        this.incrementMinor();
+        break;
+      case UpdateTypes.PATCH:
+        this.incrementPatch();
+        break;
+    }
+
+    if (preRelease) {
+      this.setPreRelease(preRelease);
+    } else {
+      this.resetPreRelease();
+    }
+
+    if (build) {
+      this.setBuild(build);
+    } else {
+      this.resetBuild();
+    }
   }
 }
