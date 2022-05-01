@@ -1,5 +1,6 @@
 **test**
-/coverage
 /docs
 /tcr
 /tests
+/.github
+tcrw

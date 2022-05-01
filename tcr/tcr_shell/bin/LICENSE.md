@@ -1,10 +1,10 @@
-inotify-win : LICENSE
-========================================================================
+# inotify-win : LICENSE
 
 This tool is published under the BSD license. For reference, see
 http://www.opensource.org/licenses/bsd-license.php
 
 This is the license's text:
+
 ```
 Copyright (c) 2012-2021, Timm Friebe
 All rights reserved.
@@ -19,7 +19,7 @@ met:
   notice, this list of conditions and the following disclaimer in the
   documentation and/or other materials provided with the distribution.
 * Neither the name of the XP-Framework nor the names of its
-  contributors may be used to endorse or promote products derived 
+  contributors may be used to endorse or promote products derived
   from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
@@ -34,4 +34,3 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
-
