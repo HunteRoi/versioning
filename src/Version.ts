@@ -12,56 +12,11 @@ const defaultIndexValue = 0;
  * @implements {IVersion}
  */
 export class Version implements IVersion {
-  private _major: number;
-  private _minor: number;
-  private _patch: number;
-  private _preRelease: string;
-  private _build: string;
-
-  /**
-   * Gets the [major] value.
-   *
-   * @readonly
-   */
-  get major() {
-    return this._major;
-  }
-
-  /**
-   * Gets the [minor] value.
-   *
-   * @readonly
-   */
-  get minor() {
-    return this._minor;
-  }
-
-  /**
-   * Gets the [patch] value.
-   *
-   * @readonly
-   */
-  get patch() {
-    return this._patch;
-  }
-
-  /**
-   * Gets the [pre-release] value.
-   *
-   * @readonly
-   */
-  get preRelease() {
-    return this._preRelease;
-  }
-
-  /**
-   * Gets the [build] value.
-   *
-   * @readonly
-   */
-  get build() {
-    return this._build;
-  }
+  #major: number;
+  #minor: number;
+  #patch: number;
+  #preRelease: string;
+  #build: string;
 
   /**
    * Creates an instance of {@link Version}.
@@ -78,29 +33,80 @@ export class Version implements IVersion {
     preRelease: string = null,
     build: string = null
   ) {
-    this._major = major;
-    this._minor = minor;
-    this._patch = patch;
-    this._preRelease = preRelease;
-    this._build = build;
+    this.#major = major;
+    this.#minor = minor;
+    this.#patch = patch;
+    this.#preRelease = preRelease;
+    this.#build = build;
+
+    Object.defineProperty(this, "major", { get: () => this.#major, enumerable: true });
+    Object.defineProperty(this, "minor", { get: () => this.#minor, enumerable: true });
+    Object.defineProperty(this, "patch", { get: () => this.#patch, enumerable: true });
+    Object.defineProperty(this, "preRelease", { get: () => this.#preRelease, enumerable: true });
+    Object.defineProperty(this, "build", { get: () => this.#build, enumerable: true });
+  }
+
+  /**
+   * Gets the [major] value.
+   *
+   * @readonly
+   */
+  get major() {
+    return this.#major;
+  }
+
+  /**
+   * Gets the [minor] value.
+   *
+   * @readonly
+   */
+  get minor() {
+    return this.#minor;
+  }
+
+  /**
+   * Gets the [patch] value.
+   *
+   * @readonly
+   */
+  get patch() {
+    return this.#patch;
+  }
+
+  /**
+   * Gets the [pre-release] value.
+   *
+   * @readonly
+   */
+  get preRelease() {
+    return this.#preRelease;
+  }
+
+  /**
+   * Gets the [build] value.
+   *
+   * @readonly
+   */
+  get build() {
+    return this.#build;
   }
 
   /** @inheritdoc */
   incrementMajor(): void {
-    this._major++;
-    this._minor = defaultIndexValue;
-    this._patch = defaultIndexValue;
+    this.#major++;
+    this.#minor = defaultIndexValue;
+    this.#patch = defaultIndexValue;
   }
 
   /** @inheritdoc */
   incrementMinor(): void {
-    this._minor++;
-    this._patch = defaultIndexValue;
+    this.#minor++;
+    this.#patch = defaultIndexValue;
   }
 
   /** @inheritdoc */
   incrementPatch(): void {
-    this._patch++;
+    this.#patch++;
   }
 
   /**
@@ -112,12 +118,12 @@ export class Version implements IVersion {
       throw new Error(
         'The pre-release suffix must be alphanumeric values separated by dots!'
       );
-    this._preRelease = preRelease;
+    this.#preRelease = preRelease;
   }
 
   /** @inheritdoc */
   resetPreRelease(): void {
-    this._preRelease = null;
+    this.#preRelease = null;
   }
 
   /**
@@ -129,20 +135,20 @@ export class Version implements IVersion {
       throw new Error(
         'The build suffix must be alphanumeric values separated by dots!'
       );
-    this._build = build;
+    this.#build = build;
   }
 
   /** @inheritdoc */
   resetBuild(): void {
-    this._build = null;
+    this.#build = null;
   }
 
   /** @inheritdoc */
   toString(): string {
-    let version = `${this._major}.${this._minor}.${this._patch}`;
+    let version = `${this.#major}.${this.#minor}.${this.#patch}`;
 
-    if (this._preRelease) version += `-${this._preRelease}`;
-    if (this._build) version += `+${this._build}`;
+    if (this.#preRelease) version += `-${this.#preRelease}`;
+    if (this.#build) version += `+${this.#build}`;
 
     return version;
   }

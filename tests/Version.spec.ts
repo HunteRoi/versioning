@@ -49,6 +49,19 @@ describe('Version', () => {
     expect(version.build).toBe(build);
   });
 
+  it('should iterate only through enumerable instance getters', () => {
+    const version = new Version();
+    const expected = [
+      ['major', 1],
+      ['minor', 0],
+      ['patch', 0],
+      ['preRelease', null],
+      ['build', null]
+    ];
+
+    expect(Object.entries(version)).toEqual(expected);
+  });
+
   describe('incrementMajor', () => {
     it('should increment major by one, and set minor and patch numbers to 0', () => {
       const version = new Version();
