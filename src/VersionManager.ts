@@ -20,7 +20,7 @@ export class VersionManager implements IVersionManager {
    * Creates an instance of {@link VersionManager}.
    * @param version the version to manage
    */
-  constructor(version: IVersion) {
+  constructor(version: IVersion | null) {
     if (!version) throw new Error("The 'version' parameter is mandatory!");
     this._version = version;
   }
@@ -28,7 +28,11 @@ export class VersionManager implements IVersionManager {
   /** @inheritdoc
    * @deprecated Use {@link IVersion.update} instead.
    */
-  update(type: UpdateType, preRelease?: string, build?: string): void {
+  update(
+    type: UpdateType,
+    preRelease?: string | null,
+    build?: string | null
+  ): void {
     this._version.update(type, preRelease, build);
   }
 }

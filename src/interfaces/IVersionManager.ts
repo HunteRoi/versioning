@@ -15,5 +15,9 @@ export interface IVersionManager {
    * @param build the value of the build (optional)
    * @deprecated Use {@link IVersion.update} instead.
    */
-  update(type: UpdateType, preRelease?: string, build?: string): void;
+  update(
+    type: UpdateType,
+    preRelease?: string | null,
+    build?: string | null
+  ): void;
 }

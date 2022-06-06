@@ -56,7 +56,7 @@ describe('Version', () => {
       ['minor', 0],
       ['patch', 0],
       ['preRelease', null],
-      ['build', null]
+      ['build', null],
     ];
 
     expect(Object.entries(version)).toEqual(expected);
@@ -334,6 +334,51 @@ describe('Version', () => {
       version.update(type);
 
       expect(version.build).toBeNull();
+    });
+  });
+
+  describe('get major', () => {
+    it('should return the major number of the version', () => {
+      const expected = 1;
+      const version = new Version(expected, 2, 3);
+
+      expect(version.major).toBe(expected);
+    });
+  });
+
+  describe('get minor', () => {
+    it('should return the minor number of the version', () => {
+      const expected = 2;
+      const version = new Version(1, expected, 3);
+
+      expect(version.minor).toBe(expected);
+    });
+  });
+
+  describe('get patch', () => {
+    it('should return the patch number of the version', () => {
+      const expected = 3;
+      const version = new Version(1, 2, expected);
+
+      expect(version.patch).toBe(expected);
+    });
+  });
+
+  describe('get preRelease', () => {
+    it('should return the pre-release string of the version', () => {
+      const expected = 'alpha';
+      const version = new Version(1, 2, 3, expected);
+
+      expect(version.preRelease).toBe(expected);
+    });
+  });
+
+  describe('get build', () => {
+    it('should return the build string of the version', () => {
+      const expected = '001';
+      const version = new Version(1, 2, 3, null, expected);
+
+      expect(version.build).toBe(expected);
     });
   });
 });

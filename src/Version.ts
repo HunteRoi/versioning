@@ -15,8 +15,8 @@ export class Version implements IVersion {
   #major: number;
   #minor: number;
   #patch: number;
-  #preRelease: string;
-  #build: string;
+  #preRelease: string | null;
+  #build: string | null;
 
   /**
    * Creates an instance of {@link Version}.
@@ -30,20 +30,35 @@ export class Version implements IVersion {
     major: number = 1,
     minor: number = 0,
     patch: number = 0,
-    preRelease: string = null,
-    build: string = null
+    preRelease?: string | null,
+    build?: string | null
   ) {
     this.#major = major;
     this.#minor = minor;
     this.#patch = patch;
-    this.#preRelease = preRelease;
-    this.#build = build;
+    this.#preRelease = preRelease ?? null;
+    this.#build = build ?? null;
 
-    Object.defineProperty(this, "major", { get: () => this.#major, enumerable: true });
-    Object.defineProperty(this, "minor", { get: () => this.#minor, enumerable: true });
-    Object.defineProperty(this, "patch", { get: () => this.#patch, enumerable: true });
-    Object.defineProperty(this, "preRelease", { get: () => this.#preRelease, enumerable: true });
-    Object.defineProperty(this, "build", { get: () => this.#build, enumerable: true });
+    Object.defineProperty(this, 'major', {
+      get: () => this.#major,
+      enumerable: true,
+    });
+    Object.defineProperty(this, 'minor', {
+      get: () => this.#minor,
+      enumerable: true,
+    });
+    Object.defineProperty(this, 'patch', {
+      get: () => this.#patch,
+      enumerable: true,
+    });
+    Object.defineProperty(this, 'preRelease', {
+      get: () => this.#preRelease,
+      enumerable: true,
+    });
+    Object.defineProperty(this, 'build', {
+      get: () => this.#build,
+      enumerable: true,
+    });
   }
 
   /**
@@ -51,7 +66,7 @@ export class Version implements IVersion {
    *
    * @readonly
    */
-  get major() {
+  get major(): number {
     return this.#major;
   }
 
@@ -60,7 +75,7 @@ export class Version implements IVersion {
    *
    * @readonly
    */
-  get minor() {
+  get minor(): number {
     return this.#minor;
   }
 
@@ -69,7 +84,7 @@ export class Version implements IVersion {
    *
    * @readonly
    */
-  get patch() {
+  get patch(): number {
     return this.#patch;
   }
 
@@ -78,7 +93,7 @@ export class Version implements IVersion {
    *
    * @readonly
    */
-  get preRelease() {
+  get preRelease(): string | null {
     return this.#preRelease;
   }
 
@@ -87,7 +102,7 @@ export class Version implements IVersion {
    *
    * @readonly
    */
-  get build() {
+  get build(): string | null {
     return this.#build;
   }
 
@@ -199,7 +214,11 @@ export class Version implements IVersion {
   }
 
   /** @inheritdoc */
-  update(type: UpdateType, preRelease?: string, build?: string): void {
+  update(
+    type: UpdateType,
+    preRelease?: string | null,
+    build?: string | null
+  ): void {
     switch (type) {
       case UpdateTypes.MAJOR:
         this.incrementMajor();

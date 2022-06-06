@@ -63,5 +63,9 @@ export interface IVersion {
    * @param preRelease the value of the pre-release (optional)
    * @param build the value of the build (optional)
    */
-  update(type: UpdateType, preRelease?: string, build?: string): void;
+  update(
+    type: UpdateType,
+    preRelease?: string | null,
+    build?: string | null
+  ): void;
 }
